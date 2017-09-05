@@ -11,3 +11,4 @@ sort.sh -- Executes all the sorting codes above.
 
 proj_pca.f95 -- Code to 1) find and diagonalize the covariance matrix from an MD simulation, 2) write the trajectories of these normal modes to file, 3) calculate averages and fluctuations of normal modes, and 4) compare to some properties of the LE4PD.   
 
+PE_generator.nb -- Mathematica notebook to visualize free-energy surfaces and barriers output from the LE4PD.  
