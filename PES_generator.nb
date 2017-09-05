@@ -1,0 +1,245 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9582,        236]
+NotebookOptionsPosition[      9237,        220]
+NotebookOutlinePosition[      9571,        235]
+CellTagsIndexPosition[      9528,        232]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dir", "=", "\"\</path/to/energy/surfaces/\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.689102154797964*^9, 3.6891021799177427`*^9}, {
+   3.6962706492811413`*^9, 3.69627065190488*^9}, {3.6962706903538237`*^9, 
+   3.696270692945554*^9}, {3.696270820171166*^9, 3.696270824890758*^9}, {
+   3.700266596616376*^9, 3.700266602625062*^9}, {3.700320014419076*^9, 
+   3.7003200174509897`*^9}, {3.7013755902971907`*^9, 3.701375592840465*^9}, {
+   3.7068992354189796`*^9, 3.706899241234655*^9}, {3.709769501512514*^9, 
+   3.709769503574644*^9}, 3.709769536885919*^9, {3.7119984711766768`*^9, 
+   3.711998472376401*^9}, {3.713635794096807*^9, 3.7136358071427603`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fmad", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Import", "[", 
+     RowBox[{"dir", "<>", "\"\<fmad_mp_60.dat\>\""}], "]"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.699816750131918*^9, 3.69981678078729*^9}, {
+  3.699816846766295*^9, 3.699816876381428*^9}, {3.6998169309683228`*^9, 
+  3.699816935847856*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"maxmin", "=", 
+   RowBox[{"{", "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.699904787051608*^9, 3.699904793893667*^9}, 
+   3.713635809320681*^9}],
+
+Cell[BoxData[{
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"ToString", "[", "i", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Mode \>\"", "<>", "a"}], "]"}], ";", "\[IndentingNewLine]", 
+    
+    RowBox[{"PES", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "dir", "<>", "\"\<fempa_\>\"", "<>", "a", "<>", "\"\<.dat\>\""}], 
+      "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"PES", "=", 
+     RowBox[{"ArrayReshape", "[", 
+      RowBox[{"PES", ",", 
+       RowBox[{"{", 
+        RowBox[{"1175", ",", "3"}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PES3", "=", 
+     RowBox[{"First", "/@", 
+      RowBox[{"(", 
+       RowBox[{"PES", "/.", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"z", ",", "y", ",", "x"}], "}"}]}]}], ")"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PESPlot", "=", 
+     RowBox[{"ListPlot3D", "[", 
+      RowBox[{"PES", ",", 
+       RowBox[{"ColorFunction", "\[Rule]", "\"\<Rainbow\>\""}], ",", 
+       RowBox[{"Axes", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"True", ",", "True", ",", "False"}], "}"}]}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<\[Theta] (Degrees)\>\"", ",", "\"\<\[Phi] (Degrees)\>\"", ",", 
+          "\"\<free energy (kcal \!\(\*SuperscriptBox[\(mol\), \
+\(-1\)]\))\>\""}], "}"}]}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+       RowBox[{"Mesh", "\[Rule]", "10"}], ",", 
+       RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+       RowBox[{"PlotLegends", "\[Rule]", 
+        RowBox[{"BarLegend", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"\"\<Rainbow\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Min", "[", "PES3", "]"}], ",", 
+              RowBox[{"Max", "[", "PES3", "]"}]}], "}"}]}], "}"}], ",", 
+          RowBox[{
+          "LegendLabel", "\[Rule]", 
+           "\"\<Free Energy (kcal \!\(\*SuperscriptBox[\(mol\), \
+\(-1\)]\))\>\""}], ",", 
+          RowBox[{"LabelStyle", "\[Rule]", 
+           RowBox[{"Directive", "[", 
+            RowBox[{
+             RowBox[{"FontSize", "\[Rule]", "12"}], ",", 
+             RowBox[{"Font", "\[Rule]", "\"\<Times\>\""}], ",", "Black", ",", 
+             "Bold"}], "]"}]}]}], "]"}]}], ",", 
+       RowBox[{"LabelStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"FontSize", "\[Rule]", "12"}], ",", 
+          RowBox[{"Font", "\[Rule]", "\"\<Times\>\""}], ",", "Black"}], 
+         "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"PES2", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"PES2", ",", 
+        RowBox[{
+         RowBox[{"PES", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", 
+        RowBox[{"Length", "[", "PES", "]"}]}], "}"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"bar", "=", 
+     RowBox[{"Mean", "[", "PES2", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"maxmin", "=", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"maxmin", ",", "bar"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"nrg", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"nrg", ",", 
+        RowBox[{
+         RowBox[{"PES", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", 
+        RowBox[{"Length", "[", "PES", "]"}]}], "}"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"nrg1", "=", 
+     RowBox[{"nrg", "-", 
+      RowBox[{"Min", "[", "nrg", "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fmad", "=", 
+     RowBox[{
+      RowBox[{"Median", "[", "nrg1", "]"}], "+", 
+      RowBox[{"Min", "[", "nrg", "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Median Absolute Deviation (kcal/mol) : \>\"", ",", 
+      RowBox[{"fmad", "-", 
+       RowBox[{"Min", "[", "nrg", "]"}]}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"madplot", "=", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{"fmad", ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "180"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "0", ",", "360"}], "}"}], ",", 
+       RowBox[{"Mesh", "\[Rule]", "False"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Gray", ",", 
+          RowBox[{"Opacity", "[", "0.5", "]"}]}], "}"}]}], ",", 
+       RowBox[{"BoundaryStyle", "\[Rule]", 
+        RowBox[{"Directive", "[", 
+         RowBox[{"Black", ",", "Thick"}], "]"}]}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"Show", "[", 
+      RowBox[{"PESPlot", ",", "madplot"}], "]"}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", 
+     RowBox[{"Length", "[", "fmad", "]"}]}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"     "}]}], "Input",
+ CellChangeTimes->{{3.689102122805489*^9, 3.6891021444281387`*^9}, {
+   3.689102184709243*^9, 3.6891022237062674`*^9}, {3.689102289001409*^9, 
+   3.689102341880972*^9}, {3.6962706573539953`*^9, 3.696270674266906*^9}, {
+   3.6962707161227703`*^9, 3.696270735987214*^9}, {3.6998163509707603`*^9, 
+   3.699816394575199*^9}, {3.699816428322497*^9, 3.699816471448498*^9}, {
+   3.699816666371916*^9, 3.6998166679367037`*^9}, {3.6998168791897373`*^9, 
+   3.69981690719525*^9}, {3.69989678288272*^9, 3.699896794096744*^9}, {
+   3.6998968502659903`*^9, 3.699897089494199*^9}, {3.69989716932823*^9, 
+   3.69989721205413*^9}, {3.699897258922413*^9, 3.6998972820886927`*^9}, {
+   3.699897379871635*^9, 3.699897418939742*^9}, {3.699904777751492*^9, 
+   3.699904847403973*^9}, {3.700252381957121*^9, 3.7002523833166733`*^9}, {
+   3.700319640699048*^9, 3.700319660251073*^9}, 3.700493104982017*^9, {
+   3.700497165254223*^9, 3.7004971696713657`*^9}, {3.700497252029428*^9, 
+   3.700497266740964*^9}, {3.7004998994574947`*^9, 3.700499909913254*^9}, {
+   3.700500128238573*^9, 3.700500134453624*^9}, {3.700500180938257*^9, 
+   3.700500236037266*^9}, {3.7005002782416677`*^9, 3.700500310745612*^9}, {
+   3.700500663632552*^9, 3.700500676962264*^9}, {3.7005041131444407`*^9, 
+   3.700504179928892*^9}, {3.700504253723899*^9, 3.700504258796586*^9}, {
+   3.700504322292851*^9, 3.700504329984736*^9}, {3.700504421002268*^9, 
+   3.700504430504657*^9}, {3.700504552918509*^9, 3.700504553053933*^9}, {
+   3.700504625760751*^9, 3.700504637989112*^9}, {3.700507460474424*^9, 
+   3.700507461305242*^9}, {3.700511704654511*^9, 3.700511782654849*^9}, {
+   3.700511835759451*^9, 3.7005118431191053`*^9}, {3.700511981306182*^9, 
+   3.700511989946282*^9}, {3.700512077065587*^9, 3.700512144689546*^9}, {
+   3.700512297542639*^9, 3.7005122999325323`*^9}, 3.7005123576979837`*^9, {
+   3.700512414613463*^9, 3.700512439881118*^9}, {3.700512607470221*^9, 
+   3.7005126088011627`*^9}, {3.7013756057862463`*^9, 3.701375630222982*^9}, {
+   3.7097695500331573`*^9, 3.709769568306725*^9}, {3.713635820257579*^9, 
+   3.713635831717256*^9}}]
+},
+WindowSize->{1301, 744},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 692, 10, 32, "Input"],
+Cell[1253, 32, 358, 9, 32, "Input"],
+Cell[1614, 43, 183, 5, 32, "Input"],
+Cell[1800, 50, 7433, 168, 509, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
