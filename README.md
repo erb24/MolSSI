@@ -1,5 +1,5 @@
 # MolSSI
-Sample codes for MolSSI proposal
+Sample codes for MolSSI proposal \n
 sort.py -- Sorts the modes based on rescaled mode relaxation times.
 barrier_sort.f95 --Sorts LE4PD free-energy surfaces based on timescale of the characteristica motion described by the mode
 mode_sort.f95 -- Converts the re-ordered modes from reals (given by Python) to integers and writes them to file.
