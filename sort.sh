@@ -33,9 +33,7 @@ do
 		done < "old_mode_new_mode.dat"	
 		#Re-write barriers:
 		f95 ../../barrier_sort.f95
-		./a.out
-		#Sort internal viscosity table:
-		
+		./a.out		
 		cd ../..
 	done
 done
