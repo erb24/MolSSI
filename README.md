@@ -18,3 +18,5 @@ contact-map.f95 -- FORTRAN code to generate a contact map for a protein from an 
 com_proj_pca.f95 --Code to 1) find and diagonalize the covariance matrix from an MD simulation, 2) write the trajectories of these normal modes to file, 3) calculate averages and fluctuations of normal modes, and 4) compare to some properties of the LE4PD.  Differs from proj_pca.f95 in that it centers the molecule at the center of the simulation box at each step.
 
 JAM_PCA.f95 -- Application of the JAM model (Kitao, Hayward, and Go, *Proteins*, 33:496-517 (1998)) to the 1 ms ubquitin folding-unfolding trajectory from the D.E. Shaw group (Piana *et al.*, *PNAS*, 110(15), 5915-5920), assuming a two-state system.
+
+Matplotlib Practice.ipynb -- Jupyter Notebook illustrating the examples given in Chapter 3 of *SciPy Recipes* by Martins, Ramos, and Ayyadevara.
